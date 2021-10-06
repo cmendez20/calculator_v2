@@ -1,0 +1,83 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  display: inline-block;
+  padding: 20px;
+  /* border-radius: 1000px; */
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  background-color: #505050;
+  color: #fff;
+}
+
+#clear__btn,
+#backspace__btn {
+  padding: 15px 30px;
+  flex-basis: 150px;
+}
+
+#clear__btn {
+  background-color: #bd0000;
+}
+
+#backspace__btn {
+  background-color: #d4d4d2;
+  color: #1c1c1c;
+}
+
+.container {
+  width: 375px;
+  margin: 130px auto 0 auto;
+  background-color: #1c1c1c;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.row > button {
+  flex: 0 0 60px;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.output__screen {
+  font-size: 32px;
+  color: #fff;
+  background-color: #1c1c1c;
+  padding: 11px 15px 11px 0;
+}
+
+.output__num {
+  margin: 0;
+  text-align: right;
+  width: 100%;
+}
+
+div.clear {
+  /* justify-content: space-around; */
+}
+
+.operator__btn {
+  background-color: #ff9500;
+  color: white;
+}
