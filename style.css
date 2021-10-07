@@ -1,18 +1,19 @@
 *,
-*::before,
-*::after {
-  box-sizing: border-box;
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 html {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 button {
   display: inline-block;
-  padding: 20px;
-  /* border-radius: 1000px; */
+  padding: 15px 20px;
+  border-radius: 50%;
   border: none;
   font-size: 16px;
   font-weight: bold;
@@ -25,7 +26,8 @@ button {
 #clear__btn,
 #backspace__btn {
   padding: 15px 30px;
-  flex-basis: 150px;
+  border-radius: 15px;
+  flex-basis: 115px;
 }
 
 #clear__btn {
@@ -41,40 +43,34 @@ button {
   width: 375px;
   margin: 130px auto 0 auto;
   background-color: #1c1c1c;
-  border-radius: 20px;
-  padding: 25px;
+  border-radius: 35px;
+  padding: 30px 40px;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 25px;
-}
-
-.row > button {
-  flex: 0 0 60px;
-}
-
-.row:last-child {
-  margin-bottom: 0;
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  column-gap: 15px;
+  row-gap: 30px;
 }
 
 .output__screen {
+  /* padding: 11px 15px 11px 0; */
+  grid-column: 1 / -1;
   font-size: 32px;
   color: #fff;
   background-color: #1c1c1c;
-  padding: 11px 15px 11px 0;
-}
-
-.output__num {
   margin: 0;
   text-align: right;
-  width: 100%;
+  justify-self: stretch;
 }
 
 div.clear {
-  /* justify-content: space-around; */
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  justify-self: stretch;
 }
 
 .operator__btn {
