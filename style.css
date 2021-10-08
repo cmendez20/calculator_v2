@@ -55,8 +55,7 @@ button {
   row-gap: 30px;
 }
 
-.output__screen {
-  /* padding: 11px 15px 11px 0; */
+.calculator_display {
   grid-column: 1 / -1;
   font-size: 32px;
   color: #fff;
@@ -76,4 +75,10 @@ div.clear {
 .operator__btn {
   background-color: #ff9500;
   color: white;
+}
+
+.output__screen {
+  font-size: 18px;
+  padding: 12px 0;
+  opacity: 0;
 }
