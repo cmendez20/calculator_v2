@@ -47,7 +47,7 @@ button {
   padding: 30px 40px;
 }
 
-.calculator {
+#calculator {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
@@ -55,9 +55,10 @@ button {
   row-gap: 30px;
 }
 
-.calculator_display {
+#calculator__screen {
   grid-column: 1 / -1;
-  font-size: 32px;
+  font-size: 36px;
+  /* padding: 10px 0; */
   color: #fff;
   background-color: #1c1c1c;
   margin: 0;
@@ -65,7 +66,7 @@ button {
   justify-self: stretch;
 }
 
-div.clear {
+div#clear {
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
@@ -75,10 +76,4 @@ div.clear {
 .operator__btn {
   background-color: #ff9500;
   color: white;
-}
-
-.output__screen {
-  font-size: 18px;
-  padding: 12px 0;
-  opacity: 0;
 }

@@ -1,11 +1,8 @@
-const inputScreen = document.querySelector('.input__num');
-const outputScreen = document.querySelector('.output__screen');
-const calculator = document.querySelector('.calculator');
-let displayValue = 0;
-let numOne = 0;
-let numTwo = 0;
+const displayValue = document.querySelector('#calculator__screen');
+const calculator = document.querySelector('#calculator');
+let numOne;
+let numTwo;
 let operations = false;
-let operationsCount = 0;
 let operator;
 
 const addNums = (numOne, numTwo) => numOne + numTwo;
@@ -30,18 +27,17 @@ const operate = (operator, numOne, numTwo) => {
 };
 
 const updateDisplay = () => {
-  outputScreen.textContent = `${numOne} ${operator} ${numTwo} =`;
-  inputScreen.textContent = operate(operator, numOne, numTwo);
+  displayValue.textContent = operate(operator, numOne, numTwo);
 };
 
 calculator.addEventListener('click', e => {
-  if (e.target.tagName === 'BUTTON' && Number(e.target.textContent) >= 0) {
-    inputScreen.textContent == 0
-      ? (inputScreen.textContent = e.target.textContent)
-      : (inputScreen.textContent += e.target.textContent);
+  if (Number(e.target.textContent) >= 0) {
+    displayValue.textContent == 0
+      ? (displayValue.textContent = e.target.textContent)
+      : (displayValue.textContent += e.target.textContent);
 
     if (operations) {
-      inputScreen.textContent = e.target.textContent;
+      displayValue.textContent = e.target.textContent;
       operations = false;
     }
   }
@@ -52,23 +48,22 @@ calculator.addEventListener('click', e => {
   ) {
     operations = true;
     operator = e.target.textContent;
-    numOne = Number(inputScreen.textContent);
-    outputScreen.style.opacity = 1;
-    outputScreen.textContent = `${numOne} ${e.target.textContent}`;
-    console.log({ numOne });
+    !numOne
+      ? (numOne = Number(displayValue.textContent))
+      : (numTwo = Number(displayValue.textContent));
+
+    console.log({ operator }, { numOne }, { numTwo });
   }
 
   if (e.target.textContent === 'Clear') {
-    inputScreen.textContent = 0;
-    outputScreen.textContent = 0;
-    outputScreen.style.opacity = 0;
-    numOne = 0;
-    numTwo = 0;
+    displayValue.textContent = 0;
+    numOne = null;
+    numTwo = null;
   }
 
-  if (e.target.textContent == '=') {
-    numTwo = Number(inputScreen.textContent);
-    // console.log({ numOne }, { numTwo });
+  if (e.target.textContent === '=') {
+    numTwo = Number(displayValue.textContent);
+    console.log({ operator }, { numOne }, { numTwo });
     updateDisplay();
   }
 });
