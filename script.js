@@ -90,11 +90,23 @@ calculator.addEventListener('click', e => {
   }
 
   if (e.target.textContent === 'Backspace') {
+    console.log(displayValue.textContent);
+    console.log(displayValue.textContent.length);
+    if (displayValue.textContent === 0) {
+      return;
+    } else if (displayValue.textContent.length === 1) {
+      displayValue.textContent = 0;
+    } else {
+      displayValue.textContent = displayValue.textContent.slice(0, -1);
+    }
+    displayValueNum = displayValue.textContent;
   }
 
   if (e.target.textContent === '=') {
-    console.log({ operator }, { numOne }, { numTwo });
-    numTwo = Number(displayValueNum);
-    updateDisplay();
+    if (numOne) {
+      console.log({ operator }, { numOne }, { numTwo });
+      numTwo = Number(displayValueNum);
+      updateDisplay();
+    }
   }
 });
