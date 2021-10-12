@@ -9,7 +9,7 @@ let displayValueNum = null;
 const addNums = (numOne, numTwo) => numOne + numTwo;
 const subtractNums = (numOne, numTwo) => numOne - numTwo;
 const multiplyNums = (numOne, numTwo) => numOne * numTwo;
-const divideNums = (numOne, numTwo) => numOne / numTwo;
+const divideNums = (numOne, numTwo) => (numOne / numTwo).toFixed(2);
 
 const operate = (operator, numOne, numTwo) => {
   switch (operator) {
@@ -23,6 +23,12 @@ const operate = (operator, numOne, numTwo) => {
       return multiplyNums(numOne, numTwo);
       break;
     case '÷':
+      if (displayValueNum === '0') {
+        alert(`You can't divide by 0!`);
+
+        return (displayValue.textContent = 0);
+      }
+
       return divideNums(numOne, numTwo);
   }
 };
@@ -100,6 +106,8 @@ calculator.addEventListener('click', e => {
       displayValue.textContent = displayValue.textContent.slice(0, -1);
     }
     displayValueNum = displayValue.textContent;
+    // numOne = Number(displayValue.textContent);
+    console.log({ operator }, { numOne }, { numTwo }, 'clear');
   }
 
   if (e.target.textContent === '=') {
