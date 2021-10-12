@@ -4,6 +4,7 @@ let numOne;
 let numTwo;
 let operations = false;
 let operator;
+let displayValueNum = null;
 
 const addNums = (numOne, numTwo) => numOne + numTwo;
 const subtractNums = (numOne, numTwo) => numOne - numTwo;
@@ -26,44 +27,74 @@ const operate = (operator, numOne, numTwo) => {
   }
 };
 
+const displayInput = e => {
+  if (Number(e.target.textContent) >= 0) {
+    if (operations) {
+      displayValue.textContent = '';
+      operations = false;
+    }
+
+    if (displayValue.textContent == 0) {
+      displayValue.textContent = e.target.textContent;
+    } else {
+      displayValue.textContent += e.target.textContent;
+    }
+
+    displayValueNum = displayValue.textContent;
+
+    console.log({ operator }, { numOne }, { numTwo }, { displayValueNum });
+  }
+};
+
 const updateDisplay = () => {
-  displayValue.textContent = operate(operator, numOne, numTwo);
+  displayValue.textContent = operate(operator, Number(numOne), Number(numTwo));
+  console.log({ operator }, { numOne }, { numTwo }, 'updateDisplay');
 };
 
 calculator.addEventListener('click', e => {
-  if (Number(e.target.textContent) >= 0) {
-    displayValue.textContent == 0
-      ? (displayValue.textContent = e.target.textContent)
-      : (displayValue.textContent += e.target.textContent);
-
-    if (operations) {
-      displayValue.textContent = e.target.textContent;
-      operations = false;
-    }
-  }
+  displayInput(e);
 
   if (
     e.target.classList.contains('operator__btn') &&
     e.target.textContent !== '='
   ) {
     operations = true;
-    operator = e.target.textContent;
-    !numOne
-      ? (numOne = Number(displayValue.textContent))
-      : (numTwo = Number(displayValue.textContent));
 
-    console.log({ operator }, { numOne }, { numTwo });
+    !numOne
+      ? (numOne = Number(displayValueNum))
+      : (numTwo = Number(displayValueNum));
+
+    if (!isNaN(numOne) && !isNaN(numTwo)) {
+      updateDisplay();
+      numOne = Number(displayValue.textContent);
+      numTwo = null;
+      console.log(
+        { operator },
+        { numOne },
+        { numTwo },
+        'return from updatedisplay'
+      );
+    }
+
+    operator = e.target.textContent;
+    // console.log({ operator }, { numOne }, { numTwo });
   }
 
   if (e.target.textContent === 'Clear') {
     displayValue.textContent = 0;
-    numOne = null;
-    numTwo = null;
+    numOne = undefined;
+    numTwo = undefined;
+    operations = false;
+    operator = '';
+    displayValueNum = '';
+  }
+
+  if (e.target.textContent === 'Backspace') {
   }
 
   if (e.target.textContent === '=') {
-    numTwo = Number(displayValue.textContent);
     console.log({ operator }, { numOne }, { numTwo });
+    numTwo = Number(displayValueNum);
     updateDisplay();
   }
 });
