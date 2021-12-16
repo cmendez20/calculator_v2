@@ -1,5 +1,5 @@
-const displayValue = document.querySelector('#calculator__screen');
-const calculator = document.querySelector('#calculator');
+const displayValue = document.querySelector('.calculator__screen');
+const calculator = document.querySelector('.calculator');
 let numOne;
 let numTwo;
 let operations = false;
@@ -83,7 +83,6 @@ calculator.addEventListener('click', e => {
     }
 
     operator = e.target.textContent;
-    // console.log({ operator }, { numOne }, { numTwo });
   }
 
   if (e.target.textContent === 'Clear') {
@@ -106,7 +105,6 @@ calculator.addEventListener('click', e => {
       displayValue.textContent = displayValue.textContent.slice(0, -1);
     }
     displayValueNum = displayValue.textContent;
-    // numOne = Number(displayValue.textContent);
     console.log({ operator }, { numOne }, { numTwo }, 'clear');
   }
 

@@ -23,18 +23,18 @@ button {
   color: #fff;
 }
 
-#clear__btn,
-#backspace__btn {
+.clear__btn,
+.backspace__btn {
   padding: 15px 30px;
   border-radius: 15px;
   flex-basis: 115px;
 }
 
-#clear__btn {
+.clear__btn {
   background-color: #bd0000;
 }
 
-#backspace__btn {
+.backspace__btn {
   background-color: #d4d4d2;
   color: #1c1c1c;
 }
@@ -47,7 +47,7 @@ button {
   padding: 30px 40px;
 }
 
-#calculator {
+.calculator {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
@@ -55,7 +55,7 @@ button {
   row-gap: 30px;
 }
 
-#calculator__screen {
+.calculator__screen {
   grid-column: 1 / -1;
   font-size: 36px;
   /* padding: 10px 0; */
@@ -66,7 +66,7 @@ button {
   justify-self: stretch;
 }
 
-div#clear {
+div.clear {
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
