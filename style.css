@@ -10,70 +10,115 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #c9daea;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 button {
   display: inline-block;
   padding: 15px 20px;
   border-radius: 50%;
   border: none;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: bolder;
   text-align: center;
   cursor: pointer;
-  background-color: #505050;
-  color: #fff;
+  background-color: #adc3a2;
+  color: #1c1c1c;
+  min-width: 55px;
+  transition: all 0.2s ease-out;
+}
+
+button[data-type='digit']:hover {
+  background-color: #d3e1d1;
+}
+
+button[data-type='operator']:hover,
+button[data-type='equal']:hover {
+  background-color: #ffe7c7;
 }
 
 .clear__btn,
 .backspace__btn {
-  padding: 15px 30px;
+  padding: 10px 20px;
   border-radius: 15px;
   flex-basis: 115px;
 }
 
 .clear__btn {
-  background-color: #bd0000;
+  background-color: #ff8080;
+  background-color: #ffcccc;
+}
+
+.clear__btn:hover {
+  background-color: #ffcccc;
+  background-color: #ff8080;
 }
 
 .backspace__btn {
-  background-color: #d4d4d2;
+  background-color: #fdfffc;
   color: #1c1c1c;
 }
 
-.container {
-  width: 375px;
-  margin: 130px auto 0 auto;
-  background-color: #1c1c1c;
-  border-radius: 35px;
-  padding: 30px 40px;
+.backspace__btn:hover {
+  background-color: #d1d1d1;
 }
 
 .calculator {
+  max-width: 325px;
+  margin: 130px auto 30px auto;
+  background-color: #1c1c1c;
+  border-radius: 35px;
+  padding: 30px 0;
+
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 60px);
   justify-items: center;
-  column-gap: 15px;
-  row-gap: 30px;
+  align-items: center;
+  justify-content: center;
+  row-gap: 15px;
+  column-gap: 10px;
 }
 
 .calculator__screen {
   grid-column: 1 / -1;
   font-size: 36px;
-  /* padding: 10px 0; */
-  color: #fff;
+  padding-right: 20px;
+  color: #fdfffc;
   background-color: #1c1c1c;
   margin: 0;
-  text-align: right;
-  justify-self: stretch;
+  justify-self: end;
 }
 
 div.clear {
   grid-column: 1 / -1;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   justify-self: stretch;
+  margin-bottom: 10px;
 }
 
 .operator__btn {
-  background-color: #ff9500;
-  color: white;
+  background-color: #ffd599;
+  color: #1c1c1c;
+}
+
+.footer__text {
+  max-width: 325px;
+  margin: auto;
+  color: #1c1c1c;
+  text-align: center;
+  font-weight: bold;
+}
+
+.footer__text a:link,
+.footer__text a:visited {
+  text-decoration: none;
+  color: #3d3e4d;
+}
+
+.footer__text a:hover,
+.footer__text a:active {
+  text-decoration: underline;
 }

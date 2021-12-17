@@ -34,7 +34,7 @@ const operate = (operator, numOne, numTwo) => {
 };
 
 const displayInput = e => {
-  if (Number(e.target.textContent) >= 0) {
+  if (e.target.dataset.type === 'digit') {
     if (operations) {
       displayValue.textContent = '';
       operations = false;
@@ -47,14 +47,11 @@ const displayInput = e => {
     }
 
     displayValueNum = displayValue.textContent;
-
-    console.log({ operator }, { numOne }, { numTwo }, { displayValueNum });
   }
 };
 
 const updateDisplay = () => {
   displayValue.textContent = operate(operator, Number(numOne), Number(numTwo));
-  console.log({ operator }, { numOne }, { numTwo }, 'updateDisplay');
 };
 
 calculator.addEventListener('click', e => {
@@ -74,12 +71,6 @@ calculator.addEventListener('click', e => {
       updateDisplay();
       numOne = Number(displayValue.textContent);
       numTwo = null;
-      console.log(
-        { operator },
-        { numOne },
-        { numTwo },
-        'return from updatedisplay'
-      );
     }
 
     operator = e.target.textContent;
@@ -94,9 +85,7 @@ calculator.addEventListener('click', e => {
     displayValueNum = '';
   }
 
-  if (e.target.textContent === 'Backspace') {
-    console.log(displayValue.textContent);
-    console.log(displayValue.textContent.length);
+  if (e.target.dataset.type === 'delete') {
     if (displayValue.textContent === 0) {
       return;
     } else if (displayValue.textContent.length === 1) {
@@ -105,12 +94,10 @@ calculator.addEventListener('click', e => {
       displayValue.textContent = displayValue.textContent.slice(0, -1);
     }
     displayValueNum = displayValue.textContent;
-    console.log({ operator }, { numOne }, { numTwo }, 'clear');
   }
 
-  if (e.target.textContent === '=') {
+  if (e.target.dataset.type === 'equal') {
     if (numOne) {
-      console.log({ operator }, { numOne }, { numTwo });
       numTwo = Number(displayValueNum);
       updateDisplay();
     }

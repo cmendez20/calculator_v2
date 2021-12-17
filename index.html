@@ -8,35 +8,42 @@
     <title>Calculator</title>
   </head>
   <body>
-    <main class="container">
-      <div class="calculator">
-        <div class="calculator__screen">0</div>
-        <div class="clear">
-          <button class="clear__btn">Clear</button>
-          <button class="backspace__btn">Backspace</button>
-        </div>
-
-        <button data-num="7" data-type="digit">7</button>
-        <button data-num="8" data-type="digit">8</button>
-        <button data-num="9" data-type="digit">9</button>
-        <button class="operator__btn" data-type="operator">&divide;</button>
-
-        <button data-num="4" data-type="digit">4</button>
-        <button data-num="5" data-type="digit">5</button>
-        <button data-num="6" data-type="digit">6</button>
-        <button class="operator__btn" data-type="operator">&times;</button>
-
-        <button data-num="1" data-type="digit">1</button>
-        <button data-num="2" data-type="digit">2</button>
-        <button data-num="3" data-type="digit">3</button>
-        <button class="operator__btn" data-type="operator">&minus;</button>
-
-        <button data-type="operator">&sdot;</button>
-        <button data-num="0" data-type="digit">0</button>
-        <button class="operator__btn" data-type="operator">&equals;</button>
-        <button class="operator__btn" data-type="operator">&plus;</button>
+    <main class="calculator">
+      <div class="calculator__screen">0</div>
+      <div class="clear">
+        <button class="clear__btn">Clear</button>
+        <button class="backspace__btn" data-type="delete">Delete</button>
       </div>
+
+      <button data-num="7" data-type="digit">7</button>
+      <button data-num="8" data-type="digit">8</button>
+      <button data-num="9" data-type="digit">9</button>
+      <button class="operator__btn" data-type="operator">&divide;</button>
+
+      <button data-num="4" data-type="digit">4</button>
+      <button data-num="5" data-type="digit">5</button>
+      <button data-num="6" data-type="digit">6</button>
+      <button class="operator__btn" data-type="operator">&times;</button>
+
+      <button data-num="1" data-type="digit">1</button>
+      <button data-num="2" data-type="digit">2</button>
+      <button data-num="3" data-type="digit">3</button>
+      <button class="operator__btn" data-type="operator">&minus;</button>
+
+      <button data-type="operator">&sdot;</button>
+      <button data-num="0" data-type="digit">0</button>
+      <button class="operator__btn" data-type="equal">&equals;</button>
+      <button class="operator__btn" data-type="operator">&plus;</button>
     </main>
+
+    <footer>
+      <p class="footer__text">
+        Created by
+        <a href="https://github.com/cmendez20" target="_blank"
+          >Christopher Mendez</a
+        >
+      </p>
+    </footer>
 
     <script src="./script.js"></script>
   </body>
