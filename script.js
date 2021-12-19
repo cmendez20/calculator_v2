@@ -40,10 +40,10 @@ const displayInput = e => {
       operations = false;
     }
 
-    if (displayValue.textContent == 0) {
-      displayValue.textContent = e.target.textContent;
+    if (displayValue.textContent == '0') {
+      displayValue.textContent = e.target.dataset.num;
     } else {
-      displayValue.textContent += e.target.textContent;
+      displayValue.textContent += e.target.dataset.num;
     }
 
     displayValueNum = displayValue.textContent;
@@ -51,7 +51,13 @@ const displayInput = e => {
 };
 
 const updateDisplay = () => {
-  displayValue.textContent = operate(operator, Number(numOne), Number(numTwo));
+  let result = operate(operator, Number(numOne), Number(numTwo));
+
+  if (result % 1 != 0) {
+    displayValue.textContent = result.toFixed(2);
+  } else {
+    displayValue.textContent = result;
+  }
 };
 
 calculator.addEventListener('click', e => {
@@ -77,7 +83,7 @@ calculator.addEventListener('click', e => {
   }
 
   if (e.target.textContent === 'Clear') {
-    displayValue.textContent = 0;
+    displayValue.textContent = '0';
     numOne = undefined;
     numTwo = undefined;
     operations = false;
@@ -86,20 +92,41 @@ calculator.addEventListener('click', e => {
   }
 
   if (e.target.dataset.type === 'delete') {
-    if (displayValue.textContent === 0) {
+    if (displayValue.textContent === '0') {
       return;
     } else if (displayValue.textContent.length === 1) {
-      displayValue.textContent = 0;
+      displayValue.textContent = '0';
     } else {
       displayValue.textContent = displayValue.textContent.slice(0, -1);
     }
+
+    if (
+      displayValue.textContent.charAt(displayValue.textContent.length - 1) ===
+      '.'
+    ) {
+      console.log('test');
+      displayValue.textContent = displayValue.textContent.slice(0, -1);
+    }
+
     displayValueNum = displayValue.textContent;
+
+    if (numOne && numTwo) {
+      numOne = null;
+      numTwo = null;
+      operations = false;
+    }
   }
 
   if (e.target.dataset.type === 'equal') {
     if (numOne) {
       numTwo = Number(displayValueNum);
       updateDisplay();
+    }
+  }
+
+  if (e.target.dataset.type === 'dot') {
+    if (!displayValue.textContent.includes('.')) {
+      displayValue.textContent += '.';
     }
   }
 });
