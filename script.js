@@ -5,6 +5,7 @@ let numTwo;
 let operations = false;
 let operator;
 let displayValueNum = null;
+let counter = 0;
 
 const addNums = (numOne, numTwo) => numOne + numTwo;
 const subtractNums = (numOne, numTwo) => numOne - numTwo;
@@ -34,16 +35,21 @@ const operate = (operator, numOne, numTwo) => {
 };
 
 const displayInput = e => {
+  if (counter > 10) return;
+
   if (e.target.dataset.type === 'digit') {
     if (operations) {
       displayValue.textContent = '';
       operations = false;
+      counter = 0;
     }
 
     if (displayValue.textContent == '0') {
       displayValue.textContent = e.target.dataset.num;
+      counter++;
     } else {
       displayValue.textContent += e.target.dataset.num;
+      counter++;
     }
 
     displayValueNum = displayValue.textContent;
@@ -59,7 +65,6 @@ const updateDisplay = () => {
     displayValue.textContent = result;
   }
 };
-
 calculator.addEventListener('click', e => {
   displayInput(e);
 
@@ -68,6 +73,7 @@ calculator.addEventListener('click', e => {
     e.target.textContent !== '='
   ) {
     operations = true;
+    counter = 0;
 
     !numOne
       ? (numOne = Number(displayValueNum))
@@ -89,6 +95,7 @@ calculator.addEventListener('click', e => {
     operations = false;
     operator = '';
     displayValueNum = '';
+    counter = 0;
   }
 
   if (e.target.dataset.type === 'delete') {
